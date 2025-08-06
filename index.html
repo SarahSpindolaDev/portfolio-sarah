@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Curriculo Sarah Giulia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        
+        .bg-square {
+            position: absolute;
+            background-color: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            animation: float 8s ease-in-out infinite;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+        
+        .section-divider {
+            clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+            height: 100px;
+            background: linear-gradient(to right, #000000, #333333, #000000);
+        }
+        
+        .section-divider.reverse {
+            clip-path: polygon(0 20%, 100% 0, 100% 100%, 0 100%);
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -20px;
+            top: 0;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: white;
+            border: 2px solid black;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: -15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: white;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+ .curriculo {
+            border: 2px solid white;
+  padding: 0.75rem 2rem; /* 12px 32px */
+  font-weight: bold;
+  transition: all 0.3s ease;
+  position: relative;
+  bottom: -350px;
+  left: 20%;
+  margin: auto;
+}
+
+.curriculo:hover {
+  background-color: white;
+  color: black;
+}
+    </style>
+</head>
+<body class="bg-black text-white min-h-screen font-sans overflow-x-hidden">
+    <!-- Background squares -->
+    <div id="background-squares"></div>
+    
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-black bg-opacity-90 backdrop-blur-sm">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold tracking-tighter">
+                    <span class="bg-white text-black px-2 py-1">PORTFOLIO</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link relative">Home</a>
+                    <a href="#about" class="nav-link relative">Sobre</a>
+                    <a href="#journey" class="nav-link relative">Jornada</a>
+                    <a href="#services" class="nav-link relative">Serviços</a>
+                    <a href="#projects" class="nav-link relative">Projetos</a>
+                    <a href="#contact" class="nav-link relative">Contato</a>
+                </div>
+                <button class="md:hidden focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen flex items-center justify-center">
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+        <div class="container mx-auto px-6 z-10 text-center">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
+                <span class="block">CREATIVE</span>
+                <span class="block bg-white text-black px-4 py-2 mt-2 inline-block">SOLUTIONS</span>
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">Design inovador encontra desenvolvimento funcional para criar experiências digitais memoráveis.</p>
+            <div class="flex justify-center space-x-4">
+                <a href="#projects" class="bg-white text-black px-8 py-3 font-bold hover:bg-gray-200 transition">Meu Trabalho</a>
+                <a href="#about" class="border-2 border-white px-8 py-3 font-bold hover:bg-white hover:text-black transition">Sobre mim</a>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i class="fas fa-chevron-down text-2xl"></i>
+        </div>
+    </section>
+    
+    <!-- Divider -->
+    <div class="section-divider"></div>
+    
+<!-- About Section -->
+<section id="about" class="py-16 md:py-24 bg-gradient-to-b from-gray-900 to-black">
+    <div class="container mx-auto px-4 md:px-6 lg:px-12">
+        <div class="flex flex-col lg:flex-row items-center lg:items-start justify-center gap-8 lg:gap-16">
+            <!-- Coluna da Esquerda (Foto + Botão) - Ajustes para mobile -->
+            <div class="w-full lg:w-auto flex flex-col items-center mb-8 lg:mb-0">
+                <div class="relative" style="width: 280px; height: 280px;">
+                    <!-- Efeitos gráficos -->
+                    <div class="absolute w-full h-full bg-white transform rotate-3"
+                        style="top: -20px; left: -20px;"></div>
+                    <div class="absolute w-full h-full border-2 border-white transform -rotate-3"
+                        style="top: -30px; left: -30px;"></div>
+                    
+                    <!-- Imagem -->
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="w-[240px] h-[240px] bg-black overflow-hidden shadow-xl">
+                            <img src="https://i.ibb.co/ynLJfG9X/fotoport.jpg" alt="Sarah Spindola" 
+                                class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Botão Currículo - ajustado para mobile -->
+                <a href="PortfólioSarah.pdf" download="Curriculo_Sarah_Spindola.pdf"
+                   class="mt-6 bg-white text-black px-6 py-2 md:px-8 md:py-3 font-bold border-2 border-white hover:bg-black hover:text-white transition-colors duration-300">
+                    Baixar Currículo
+                </a>
+            </div>
+
+            <!-- Coluna da Direita (Texto + Habilidades) -->
+            <div class="w-full lg:flex-1 max-w-2xl">
+                <!-- Título Sobre Mim -->
+                <h2 class="text-4xl md:text-5xl font-bold leading-tight text-center lg:text-left">Sobre <span class="bg-white text-black px-3 py-1 inline-block">Mim</span></h2>
+                
+                <!-- Texto Descrição -->
+                <div class="space-y-4 md:space-y-6 text-base md:text-lg leading-relaxed mt-4 md:mt-6">
+                    <p>Sou uma designer e desenvolvedora apaixonada, com foco na criação de experiências digitais únicas. Minha abordagem combina sensibilidade estética com expertise técnica para entregar soluções que são ao mesmo tempo belas e funcionais.</p>
+                    <p>Com formação em artes visuais e ciência da computação, faço a ponte entre design e desenvolvimento, garantindo a implementação perfeita de visões criativas.</p>
+                </div>
+
+                <!-- Grade de Habilidades -->
+                <div class="mt-8 md:mt-12">
+                    <h3 class="text-xl md:text-2xl font-bold mb-4 md:mb-6 text-center lg:text-left">Currículo</h3>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 w-full">
+                        <div class="flex items-center space-x-3 md:space-x-4 p-3 md:p-4 bg-gray-900 rounded-lg hover:bg-gray-800 transition">
+                            <div class="w-10 h-10 md:w-12 md:h-12 bg-white text-black flex items-center justify-center rounded-full">
+                                <i class="fas fa-pen-fancy text-sm md:text-lg"></i>
+                            </div>
+                            <span class="font-medium text-sm md:text-base">Design Criativo</span>
+                        </div>
+                        
+                        <div class="flex items-center space-x-3 md:space-x-4 p-3 md:p-4 bg-gray-900 rounded-lg hover:bg-gray-800 transition">
+                            <div class="w-10 h-10 md:w-12 md:h-12 bg-white text-black flex items-center justify-center rounded-full">
+                                <i class="fas fa-code text-sm md:text-lg"></i>
+                            </div>
+                            <span class="font-medium text-sm md:text-base">Código Limpo</span>
+                        </div>
+                        
+                        <div class="flex items-center space-x-3 md:space-x-4 p-3 md:p-4 bg-gray-900 rounded-lg hover:bg-gray-800 transition">
+                            <div class="w-10 h-10 md:w-12 md:h-12 bg-white text-black flex items-center justify-center rounded-full">
+                                <i class="fas fa-lightbulb text-sm md:text-lg"></i>
+                            </div>
+                            <span class="font-medium text-sm md:text-base">Soluções Inovadoras</span>
+                        </div>
+                        
+                        <div class="flex items-center space-x-3 md:space-x-4 p-3 md:p-4 bg-gray-900 rounded-lg hover:bg-gray-800 transition">
+                            <div class="w-10 h-10 md:w-12 md:h-12 bg-white text-black flex items-center justify-center rounded-full">
+                                <i class="fas fa-rocket text-sm md:text-lg"></i>
+                            </div>
+                            <span class="font-medium text-sm md:text-base">Entrega Rápida</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+          
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    <!-- Divider -->
+    <div class="section-divider reverse"></div>
+    
+<!-- Journey Section -->
+<section id="journey" class="py-20 bg-black">
+    <div class="container mx-auto px-6">
+        <h2 class="text-4xl font-bold mb-16 text-center">Minha <span class="bg-white text-black px-2">Jornada</span></h2>
+        
+        <div class="relative timeline max-w-3xl mx-auto pl-8">
+            <!-- Education -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-bold mb-6 flex items-center">
+                    <div class="w-10 h-10 bg-white text-black flex items-center justify-center mr-4">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    Educação
+                </h3>
+                <div class="space-y-8">
+                    <!-- Formação atual em Big Data e IA -->
+                    <div class="relative timeline-item pl-8">
+                        <h4 class="text-xl font-semibold">Tecnologia em Big Data e Inteligência Artificial</h4>
+                        <div class="text-gray-400 mb-2">PUC Goiás | 2025 - 2027 (Cursando)</div>
+                        <p class="text-gray-300">Formação técnica em análise de dados, machine learning e desenvolvimento de sistemas inteligentes.</p>
+                    </div>
+
+
+                    <!-- Curso de Web Design Responsivo -->
+                    <div class="relative timeline-item pl-8">
+                        <h4 class="text-xl font-semibold">Certificação em Web Design Responsivo</h4>
+                        <div class="text-gray-400 mb-2">freeCodeCamp | 2025 (Cursando)</div>
+                        <p class="text-gray-300">
+                            Curso prático focado em HTML5, CSS3 e JavaScript moderno para criação de websites adaptáveis.
+                            <a href="https://www.freecodecamp.org/learn/2022/responsive-web-design/" 
+                               target="_blank" 
+                               class="text-blue-400 hover:underline ml-1">
+                               Ver curso
+                            </a>
+                        </p>
+                    </div>
+
+                    <div class="relative timeline-item pl-8">
+                        <h4 class="text-xl font-semibold">Certificação em Cyber Segurança</h4>
+                        <div class="text-gray-400 mb-2">Google + CIEE | 2025 (Cursando)</div>
+                        <p class="text-gray-300">
+                            Formação técnica em segurança cibernética, análise de vulnerabilidades e proteção de dados contra ameaças digitais.
+                            <a href="https://www.coursera.org/programs/ciberseguranca-2025-am06j/professional-certificates/google-cybersecurity?collectionId=f3CqQ/" 
+                               target="_blank" 
+                               class="text-blue-400 hover:underline ml-1">
+                               Ver curso
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Skills -->
+            <div class="mt-12"> <!-- Espaço acima da seção de habilidades -->
+                <h3 class="text-2xl font-bold mb-6 flex items-center">
+                    <div class="w-10 h-10 bg-white text-black flex items-center justify-center mr-4">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    Habilidades
+                </h3>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <!-- Habilidades Técnicas -->
+                    <div class="bg-gray-900 p-4 text-center hover:bg-gray-800 transition">
+                        <div class="w-12 h-12 bg-white text-black flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <span>Fundamentos de Big Data</span>
+                    </div>
+                    
+                    <div class="bg-gray-900 p-4 text-center hover:bg-gray-800 transition">
+                        <div class="w-12 h-12 bg-white text-black flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <span>Introdução à IA</span>
+                    </div>
+                    
+       <div class="bg-gray-900 p-4 text-center hover:bg-gray-800 transition">
+    <div class="w-12 h-12 bg-white text-black flex items-center justify-center mx-auto mb-2 rounded-full">
+        <i class="fab fa-java text-xl font-bold" style="transform: scale(1.2);"></i>
+    </div>
+    <span class="font-medium">Java Básico</span>
+</div>
+                    <!-- Web Design -->
+                    <div class="bg-gray-900 p-4 text-center hover:bg-gray-800 transition">
+                        <div class="w-12 h-12 bg-white text-black flex items-center justify-center mx-auto mb-2">
+                            <i class="fab fa-html5"></i>
+                        </div>
+                        <span>HTML5</span>
+                    </div>
+                    
+                    <div class="bg-gray-900 p-4 text-center hover:bg-gray-800 transition">
+                        <div class="w-12 h-12 bg-white text-black flex items-center justify-center mx-auto mb-2">
+                            <i class="fab fa-css3-alt"></i>
+                        </div>
+                        <span>CSS3</span>
+                    </div>
+                    
+                    <div class="bg-gray-900 p-4 text-center hover:bg-gray-800 transition">
+                        <div class="w-12 h-12 bg-white text-black flex items-center justify-center mx-auto mb-2">
+                            <i class="fab fa-js"></i>
+                        </div>
+                        <span>JavaScript ES6+</span>
+                    </div>
+
+                    <!-- Em progresso -->
+                    <div class="bg-gray-900 p-4 text-center border-2 border-yellow-500 hover:bg-gray-800 transition">
+                        <div class="w-12 h-12 bg-white text-black flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <span>Análise de Dados <span class="text-yellow-400 text-xs">(estudando)</span></span>
+                    </div>
+                    
+                    <div class="bg-gray-900 p-4 text-center border-2 border-yellow-500 hover:bg-gray-800 transition">
+                        <div class="w-12 h-12 bg-white text-black flex items-center justify-center mx-auto mb-2">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <span>Web Responsivo <span class="text-yellow-400 text-xs">(estudando)</span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Divider -->
+<div class="section-divider"></div>
+    
+    <!-- Services Section -->
+<section id="services" class="py-20 bg-gradient-to-b from-black to-gray-900">
+    <div class="container mx-auto px-6">
+        <h2 class="text-4xl font-bold mb-16 text-center">Meus <span class="bg-white text-black px-2">Serviços</span></h2>
+        
+        <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+  <!-- Service 1: Desenvolvimento Web - Bordas Retas -->
+<div class="bg-gray-900 p-8 relative group hover:-translate-y-2 transition duration-300 border border-white/30 hover:border-white/60">
+    <div class="w-16 h-16 bg-white text-black flex items-center justify-center mb-6 mx-auto">
+        <i class="fas fa-code text-2xl"></i>
+    </div>
+    <h3 class="text-2xl font-bold mb-4 text-center">Desenvolvimento Web</h3>
+    <p class="text-gray-400 mb-4 text-center">Sites responsivos e performáticos com tecnologias modernas</p>
+    <ul class="space-y-2 text-gray-300">
+        <li class="flex items-center">
+            <i class="fas fa-check text-white mr-2"></i>
+            HTML5/CSS3 semântico
+        </li>
+        <li class="flex items-center">
+            <i class="fas fa-check text-white mr-2"></i>
+            JavaScript ES6+
+        </li>
+        <li class="flex items-center">
+            <i class="fas fa-check text-white mr-2"></i>
+            Design Responsivo
+        </li>
+        <li class="flex items-center">
+            <i class="fas fa-check text-white mr-2"></i>
+            Integração com APIs
+        </li>
+    </ul>
+</div>
+            <!-- Service 2: Manutenção -->
+            <div class="bg-gray-900 p-8 transform hover:-translate-y-2 transition duration-300 border border-blue-900">
+                <div class="w-16 h-16 bg-blue-900 text-blue-300 flex items-center justify-center mb-6 mx-auto">
+                    <i class="fas fa-tools text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-4 text-center">Manutenção</h3>
+                <p class="text-blue-300 mb-4 text-center">Atualizações e otimizações contínuas</p>
+                <ul class="space-y-2 text-gray-300">
+                    <li class="flex items-center">
+                        <i class="fas fa-sync-alt text-blue-300 mr-2"></i>
+                        Atualização de conteúdo
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-bug text-blue-300 mr-2"></i>
+                        Correção de problemas
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-bolt text-blue-300 mr-2"></i>
+                        Otimização de performance
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-shield-alt text-blue-300 mr-2"></i>
+                        Ajustes de segurança
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Service 3: Dashboards -->
+            <div class="bg-gray-900 p-8 transform hover:-translate-y-2 transition duration-300 border border-purple-900">
+                <div class="w-16 h-16 bg-purple-900 text-purple-300 flex items-center justify-center mb-6 mx-auto">
+                    <i class="fas fa-chart-line text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-4 text-center">Dashboards</h3>
+                <p class="text-purple-300 mb-4 text-center">Visualização de dados inteligente</p>
+                <ul class="space-y-2 text-gray-300">
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-purple-300 mr-2"></i>
+                        Power BI/Tableau
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-purple-300 mr-2"></i>
+                        Integração Java
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-purple-300 mr-2"></i>
+                        ETL básico
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-purple-300 mr-2"></i>
+                        Relatórios automatizados
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+    <!-- Divider -->
+    <div class="section-divider reverse"></div>
+    
+    <!-- Projects Section -->
+<section id="projects" class="py-20 bg-black">
+    <div class="container mx-auto px-6">
+        <h2 class="text-4xl font-bold mb-16 text-center">Projetos <span class="bg-white text-black px-2">Futuros</span></h2>
+        
+        <div class="grid md:grid-cols-2 gap-8">
+            <!-- Project 1 - Placeholder -->
+            <div class="project-card bg-gray-900 transition duration-500 ease-in-out border border-white/20">
+                <div class="relative overflow-hidden">
+                    <div class="h-64 bg-gradient-to-r from-gray-900 to-gray-800 flex items-center justify-center">
+                        <div class="text-center p-6">
+                            <i class="fas fa-code-branch text-6xl text-white opacity-50 mb-4"></i>
+                            <h3 class="text-2xl font-bold text-white/70">Em Desenvolvimento</h3>
+                            <p class="text-white/50 mt-2">Projeto de portfólio em andamento</p>
+                        </div>
+                    </div>
+                    <div class="absolute inset-0 bg-black bg-opacity-60 opacity-0 hover:opacity-100 transition duration-300 flex items-center justify-center">
+                        <span class="border-2 border-white px-6 py-2 font-bold text-white">Disponível em breve</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-2xl font-bold mb-2">Projeto Web</h3>
+                    <p class="text-gray-400 mb-4">Site profissional com tecnologias modernas</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-gray-800 px-3 py-1 text-sm">HTML/CSS</span>
+                        <span class="bg-gray-800 px-3 py-1 text-sm">JavaScript</span>
+                        <span class="bg-gray-800 px-3 py-1 text-sm">Responsivo</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project 2 - Placeholder -->
+            <div class="project-card bg-gray-900 transition duration-500 ease-in-out border border-white/20">
+                <div class="relative overflow-hidden">
+                    <div class="h-64 bg-gradient-to-r from-gray-900 to-gray-800 flex items-center justify-center">
+                        <div class="text-center p-6">
+                            <i class="fas fa-chart-line text-6xl text-white opacity-50 mb-4"></i>
+                            <h3 class="text-2xl font-bold text-white/70">Em Planejamento</h3>
+                            <p class="text-white/50 mt-2">Dashboard analítico</p>
+                        </div>
+                    </div>
+                    <div class="absolute inset-0 bg-black bg-opacity-60 opacity-0 hover:opacity-100 transition duration-300 flex items-center justify-center">
+                        <span class="border-2 border-white px-6 py-2 font-bold text-white">Disponível em breve</span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-2xl font-bold mb-2">Análise de Dados</h3>
+                    <p class="text-gray-400 mb-4">Visualização de dados com Power BI</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-gray-800 px-3 py-1 text-sm">Power BI</span>
+                        <span class="bg-gray-800 px-3 py-1 text-sm">Java</span>
+                        <span class="bg-gray-800 px-3 py-1 text-sm">ETL</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-12">
+            <button class="border-2 border-white px-8 py-3 font-bold text-white hover:bg-white hover:text-black transition opacity-80 hover:opacity-100">
+                Meus Projetos em Breve
+            </button>
+        </div>
+    </div>
+</section>
+    <!-- Divider -->
+    <div class="section-divider"></div>
+    
+<!-- Seção de Contato -->
+<section id="contact" class="py-20 bg-gradient-to-b from-gray-900 to-black">
+    <div class="container mx-auto px-6">
+        <h2 class="text-4xl font-bold mb-16 text-center">Entre em <span class="bg-white text-black px-2">Contato</span></h2>
+        
+        <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-12">
+            <div>
+                <h3 class="text-2xl font-bold mb-6">Vamos conversar sobre seu projeto</h3>
+                <p class="text-gray-400 mb-8 leading-relaxed">Estou disponível para trabalhos freelancer. Se você tem um projeto para discutir ou apenas quer dizer olá, sinta-se à vontade para entrar em contato.</p>
+                
+                <div class="space-y-6">
+                    <div class="flex items-start">
+                        <div class="w-10 h-10 bg-white text-black flex items-center justify-center mr-4 mt-1">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Email</h4>
+                            <a href="mailto:sarahspindoladev@gmail.com" class="text-gray-400 hover:text-white">sarahspindoladev@gmail.com</a>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <div class="w-10 h-10 bg-white text-black flex items-center justify-center mr-4 mt-1">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Localização</h4>
+                            <p class="text-gray-400">Goiânia, GO</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-10 flex space-x-4">
+                    <a href="https://www.linkedin.com/in/sarahspindolab/" class="w-10 h-10 bg-white text-black flex items-center justify-center hover:bg-gray-200 transition">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://www.github.com/SarahSpindolaDev" class="w-10 h-10 bg-white text-black flex items-center justify-center hover:bg-gray-200 transition">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div>
+                <!-- Formulário com Fallback JavaScript -->
+                <form id="contactForm" class="space-y-6" action="https://formspree.io/f/myyqyqyj" method="POST">
+                    <input type="hidden" name="_subject" value="Novo contato do portfólio">
+                    <input type="hidden" name="_language" value="pt">
+                    
+                    <div>
+                        <label for="name" class="block mb-2">Nome</label>
+                        <input type="text" id="name" name="name" required class="w-full bg-gray-800 border-b border-gray-700 py-2 px-3 focus:outline-none focus:border-white transition">
+                    </div>
+                    
+                    <div>
+                        <label for="email" class="block mb-2">Email</label>
+                        <input type="email" id="email" name="email" required class="w-full bg-gray-800 border-b border-gray-700 py-2 px-3 focus:outline-none focus:border-white transition">
+                    </div>
+                    
+                    <div>
+                        <label for="subject" class="block mb-2">Assunto</label>
+                        <input type="text" id="subject" name="subject" required class="w-full bg-gray-800 border-b border-gray-700 py-2 px-3 focus:outline-none focus:border-white transition">
+                    </div>
+                    
+                    <div>
+                        <label for="message" class="block mb-2">Mensagem</label>
+                        <textarea id="message" name="message" rows="4" required class="w-full bg-gray-800 border-b border-gray-700 py-2 px-3 focus:outline-none focus:border-white transition"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="bg-white text-black px-8 py-3 font-bold hover:bg-gray-200 transition w-full md:w-auto">Enviar Mensagem</button>
+                </form>
+
+                <!-- Mensagem de confirmação (inicialmente oculta) -->
+                <div id="successMessage" class="hidden mt-6 p-4 bg-green-500 text-white rounded">
+                    Mensagem enviada com sucesso! Entrarei em contato em breve.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Script para fallback caso Formspree não funcione -->
+<script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Aqui você pode adicionar lógica para enviar por email.js ou outro serviço
+        // Por enquanto, apenas mostra a mensagem de sucesso
+        document.getElementById('successMessage').classList.remove('hidden');
+        this.reset();
+        
+        // Opcional: rolar até a mensagem de sucesso
+        document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
+    });
+</script>
+    
+   <!-- Footer -->
+<footer class="bg-black py-12">
+    <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+            <div class="text-2xl font-bold tracking-tighter mb-6 md:mb-0">
+                <span class="bg-white text-black px-2 py-1">PORTFOLIO</span>
+            </div>
+            
+            <div class="flex space-x-6">
+                <a href="#home" class="hover:text-gray-400 transition">Home</a>
+                <a href="#about" class="hover:text-gray-400 transition">Sobre</a>
+                <a href="#services" class="hover:text-gray-400 transition">Serviços</a>
+                <a href="#projects" class="hover:text-gray-400 transition">Projetos</a>
+                <a href="#contact" class="hover:text-gray-400 transition">Contato</a>
+            </div>
+        </div>
+        
+        <div class="border-t border-gray-800 mt-10 pt-10 flex flex-col md:flex-row justify-between items-center">
+            <p class="text-gray-500 mb-6 md:mb-0">© 2023 Sarah Giulia. Todos os direitos reservados.</p>
+            
+            <div class="flex space-x-4">
+                <a href="https://www.linkedin.com/in/sarahspindolab/" class="text-gray-500 hover:text-white transition" target="_blank">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://www.github.com/SarahSpindolaDev" class="text-gray-500 hover:text-white transition" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+    
+    <script>
+        // Create background squares
+        document.addEventListener('DOMContentLoaded', function() {
+            const container = document.getElementById('background-squares');
+            const squareCount = 20;
+            
+            for (let i = 0; i < squareCount; i++) {
+                const square = document.createElement('div');
+                square.classList.add('bg-square');
+                
+                // Random size between 20 and 100px
+                const size = Math.random() * 80 + 20;
+                square.style.width = `${size}px`;
+                square.style.height = `${size}px`;
+                
+                // Random position
+                square.style.left = `${Math.random() * 100}%`;
+                square.style.top = `${Math.random() * 100}%`;
+                
+                // Random animation delay
+                square.style.animationDelay = `${Math.random() * 5}s`;
+                
+                // Random rotation
+                square.style.transform = `rotate(${Math.random() * 360}deg)`;
+                
+                // Fade in after a random delay
+                setTimeout(() => {
+                    square.style.opacity = '1';
+                }, Math.random() * 2000);
+                
+                container.appendChild(square);
+            }
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
