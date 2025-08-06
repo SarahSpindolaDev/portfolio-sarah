@@ -509,12 +509,13 @@
     <!-- Divider -->
     <div class="section-divider"></div>
     
-<!-- Seção de Contato -->
+<!-- Seção de Contato Atualizada -->
 <section id="contact" class="py-20 bg-gradient-to-b from-gray-900 to-black">
     <div class="container mx-auto px-6">
         <h2 class="text-4xl font-bold mb-16 text-center">Entre em <span class="bg-white text-black px-2">Contato</span></h2>
         
         <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-12">
+            <!-- Informações de Contato -->
             <div>
                 <h3 class="text-2xl font-bold mb-6">Vamos conversar sobre seu projeto</h3>
                 <p class="text-gray-400 mb-8 leading-relaxed">Estou disponível para trabalhos freelancer. Se você tem um projeto para discutir ou apenas quer dizer olá, sinta-se à vontade para entrar em contato.</p>
@@ -551,34 +552,50 @@
                 </div>
             </div>
             
+            <!-- Formulário com EmailJS -->
             <div>
-                <!-- Formulário com Fallback JavaScript -->
-                <form id="contactForm" class="space-y-6" action="https://formspree.io/f/myyqyqyj" method="POST">
-                    <input type="hidden" name="_subject" value="Novo contato do portfólio">
-                    <input type="hidden" name="_language" value="pt">
-                    
+                <form id="contact-form" class="space-y-6">
                     <div>
                         <label for="name" class="block mb-2">Nome</label>
-                        <input type="text" id="name" name="name" required class="w-full bg-gray-800 border-b border-gray-700 py-2 px-3 focus:outline-none focus:border-white transition">
+                        <input type="text" id="name" name="from_name" required 
+                               class="w-full bg-gray-800 border-b border-gray-700 py-2 px-3 focus:outline-none focus:border-white transition">
                     </div>
                     
                     <div>
                         <label for="email" class="block mb-2">Email</label>
-                        <input type="email" id="email" name="email" required class="w-full bg-gray-800 border-b border-gray-700 py-2 px-3 focus:outline-none focus:border-white transition">
+                        <input type="email" id="email" name="reply_to" required 
+                               class="w-full bg-gray-800 border-b border-gray-700 py-2 px-3 focus:outline-none focus:border-white transition">
                     </div>
                     
                     <div>
                         <label for="subject" class="block mb-2">Assunto</label>
-                        <input type="text" id="subject" name="subject" required class="w-full bg-gray-800 border-b border-gray-700 py-2 px-3 focus:outline-none focus:border-white transition">
+                        <input type="text" id="subject" name="subject" required 
+                               class="w-full bg-gray-800 border-b border-gray-700 py-2 px-3 focus:outline-none focus:border-white transition">
                     </div>
                     
                     <div>
                         <label for="message" class="block mb-2">Mensagem</label>
-                        <textarea id="message" name="message" rows="4" required class="w-full bg-gray-800 border-b border-gray-700 py-2 px-3 focus:outline-none focus:border-white transition"></textarea>
+                        <textarea id="message" name="message" rows="4" required 
+                                  class="w-full bg-gray-800 border-b border-gray-700 py-2 px-3 focus:outline-none focus:border-white transition"></textarea>
                     </div>
                     
-                    <button type="submit" class="bg-white text-black px-8 py-3 font-bold hover:bg-gray-200 transition w-full md:w-auto">Enviar Mensagem</button>
+                    <button type="submit" class="bg-white text-black px-8 py-3 font-bold hover:bg-gray-200 transition w-full md:w-auto">
+                        Enviar Mensagem
+                    </button>
                 </form>
+
+                <!-- Mensagens de status -->
+                <div id="success-message" class="hidden mt-6 p-4 bg-green-500 text-white rounded">
+                    Mensagem enviada com sucesso! Entrarei em contato em breve.
+                </div>
+                <div id="error-message" class="hidden mt-6 p-4 bg-red-500 text-white rounded">
+                    Ocorreu um erro. Por favor, tente novamente ou envie diretamente para sarahspindoladev@gmail.com
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 
                 <!-- Mensagem de confirmação (inicialmente oculta) -->
                 <div id="successMessage" class="hidden mt-6 p-4 bg-green-500 text-white rounded">
@@ -681,5 +698,36 @@
             });
         });
     </script>
+    <!-- Adicione no final do body, antes do </html> -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>
+    // Inicialize EmailJS (substitua com suas credenciais)
+    emailjs.init('SEU_USER_ID_EMAILJS');
+    
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Mostrar loading (opcional)
+        const submitBtn = e.target.querySelector('button[type="submit"]');
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = 'Enviando...';
+        
+        // Enviar e-mail
+        emailjs.sendForm('SEU_SERVICE_ID', 'SEU_TEMPLATE_ID', this)
+            .then(() => {
+                document.getElementById('success-message').classList.remove('hidden');
+                document.getElementById('error-message').classList.add('hidden');
+                e.target.reset();
+            })
+            .catch(() => {
+                document.getElementById('error-message').classList.remove('hidden');
+                document.getElementById('success-message').classList.add('hidden');
+            })
+            .finally(() => {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = 'Enviar Mensagem';
+            });
+    });
+</script>
 </body>
 </html>
